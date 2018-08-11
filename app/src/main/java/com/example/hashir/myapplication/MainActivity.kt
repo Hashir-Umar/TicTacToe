@@ -142,20 +142,21 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
         }
-
-        if (isPlayerWins() || turn == 9) {
+        var win = isPlayerWins();
+        if (win || turn == 9) {
 
             var l = findViewById<LinearLayout>(R.id.linearLayout)
             l.visibility = View.GONE
-
-            if (turn == 9)
-                title.text = "Draw"
-            else {
+                
+            if(win) {
                 if (player == 1)
                     title.text = "${player1Name} Wins"
                 else
                     title.text = "${player2Name} Wins"
             }
+            else
+                title.text = "Draw"
+            
             btnRestart.text = "Play Again"
             flag = "again"
 
